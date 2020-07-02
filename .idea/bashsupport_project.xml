@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BashSupportProjectSettings">
+    <option name="globalVariables">
+      <set>
+        <option value="LIB_DIR" />
+        <option value="LIB_EXT" />
+        <option value="LIB_PREFIX" />
+        <option value="LOCAL_LIB_DIR" />
+        <option value="SYS_LIB_DIR" />
+        <option value="VERBOSITY" />
+        <option value="_DIR" />
+      </set>
+    </option>
+  </component>
+</project>
