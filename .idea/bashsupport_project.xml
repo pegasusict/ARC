@@ -13,6 +13,7 @@
         <option value="LOG_FILE_CREATED" />
         <option value="LOG_WIDTH" />
         <option value="SCREEN_WIDTH" />
+        <option value="SCRIPT" />
         <option value="START_TIME" />
         <option value="SYS_LIB_DIR" />
         <option value="VERBOSITY" />

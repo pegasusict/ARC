@@ -1,18 +1,25 @@
-#!/bin/bash
-####################################################################################################
-## Pegasus' Linux Administration Tools                                   Audio Repository Cleaner ##
-## Version 0.0.2 DEV, Build 2020-07-01                          https://github.com/pegasusict/arc ##
-## Copyright 2020, Mattijs Snepvangers - Pegasus ICT Dienstverlening                 Licence: MIT ##
-####################################################################################################
-declare -gr ThisProg=${0##*/}
+#!/bin/env bash
+################################################################################
+## Audio Repository Cleaner            # Version 0.1.0-DEV, Build 2020-07-02  ##
+## https://github.com/pegasusict/arc   # © 2020 Mattijs Snepvangers           ##
+## Licence: MIT                        # Please keep my name in the credits   ##
+################################################################################
 
-# bash strict mode
-set -euo pipefail
-IFS=$'\n\t'
-declare -gr LOG=info
+declare -gr Command="$0"
+declare -gr Script=${0##*/}
+declare -gr ScriptTitle="Audio Repository Cleaner"
+declare -gr website="https://github.com/pegasusict/arc"
+declare -agr ScriptVersion=( 0 1 0 "DEV" 20200702 )
+declare -g VERBOSITY=5
+# load BashBox framework
+source PBFL/bashbox.bash
+
 declare -gr dirs="/media/pegasus/PegsMusic*"
-declare -igr COUNTDOWN=30;
-declare -igr INTERVAL=1
+declare -ig ARC_COUNTDOWN_DEFAULT=60;
+declare -ig ARC_INTERVAL_DEFAULT=5
+
+# parse ini if present
+bb_ini_parse
 
 die() { echo $@ >&2; exit 2; }
 version() { help | less -n+2 | head -1 }
@@ -24,7 +31,14 @@ function init() {
     tput init
     echo -e "diskspace at beginning:\n"; spaceCheck
 }
-#function countProgress() { echo $COUNT; COUNT=$(( $COUNT + 1 )); }
+function countDown() { 
+  [[ -n $1 ]] && local _countdown=$1 || local _countdown=$ARC_COUNTDOWN_DEFAULT
+  [[ -n $2 ]] && local _interval=$2 || local _interval=$ARC_DEFAULT_INTERVAL
+  for (( local _count=$_countdown; $_count > 0; _count=$( $_count-$_interval ))); do
+    echo $_count
+    sleep ${_interval}s
+  done
+}
 
 function cursorUp() { tput cuu $1 ;}
 function clearLine() { tput el; }
