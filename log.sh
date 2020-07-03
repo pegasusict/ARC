@@ -17,15 +17,7 @@ PROG=${0##*/}
 LOG=info
 die() { echo $@ >&2; exit 2; }
 
-log_info() {
-  LOG=info
-}
-log_quiet() {
-  LOG=quiet
-}
-log() {
-  [ $LOG = info ] && echo "$1"; return 1 ## number of args used
-}
+
 help() {
   grep "^##" "$0" | sed -e "s/^...//" -e "s/\$PROG/$PROG/g"; exit 0
 }

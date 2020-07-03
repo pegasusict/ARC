@@ -3,10 +3,17 @@
   <component name="BashSupportProjectSettings">
     <option name="globalVariables">
       <set>
+        <option value="COMMAND" />
         <option value="LIB_DIR" />
         <option value="LIB_EXT" />
         <option value="LIB_PREFIX" />
         <option value="LOCAL_LIB_DIR" />
+        <option value="LOG_BUFFER" />
+        <option value="LOG_FILE" />
+        <option value="LOG_FILE_CREATED" />
+        <option value="LOG_WIDTH" />
+        <option value="SCREEN_WIDTH" />
+        <option value="START_TIME" />
         <option value="SYS_LIB_DIR" />
         <option value="VERBOSITY" />
         <option value="_DIR" />
